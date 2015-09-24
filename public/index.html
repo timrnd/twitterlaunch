@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Twitter Launch</title>
+</head>
+<body>
+ 
+<h1>Twitter Launcher</h1>
+<h2 id="msg"><h2>
+
+  <input id="txtHashtags" type="text" placeholder="HashTags">
+  <input id="txtLaunchAt" type="number" placeholder="Launch At">
+  <button id='btnStart'>Start</button>
+  <button id='btnStop'>Stop</button>
+<br /><br />
+<span id="rocketFuelGaugeContainer"></span>
+<br />
+<ul id="tweets"></ul>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+  <script src="/js/twitter.js"></script>
+  <script src="/js/gauge.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>

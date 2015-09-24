@@ -1,0 +1,17 @@
+{
+  "name": "twitterlaunch",
+  "version": "1.0.0",
+  "description": "Launch rocket with tweets",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "request": "^2.63.0",
+    "socket.io": "^1.3.7",
+    "twit": "^2.1.0"
+  }
+}
