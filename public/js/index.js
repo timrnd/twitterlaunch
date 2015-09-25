@@ -43,7 +43,7 @@ socket.on('statusMsg', function(data){
 			gif.addClass('blast-off');
 			$("body").append(gif);
 			setTimeout(function(){
-				$(".blash-off").remove();
+				$(".blast-off").remove();
 			}, 8000);
 		}, 1500);
 	}
