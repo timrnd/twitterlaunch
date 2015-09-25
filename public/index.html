@@ -3,24 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Twitter Launch</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <style type='text/css'>
+    .twitter-tweet {
+      margin: auto;
+    }
+    .blast-off {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .twitter-form {
+      margin: auto;
+      width: 50%;
+    }
+  </style>
 </head>
-<body>
- 
-<h1>Twitter Launcher</h1>
-<h2 id="msg"><h2>
-
-  <input id="txtHashtags" type="text" placeholder="HashTags">
-  <input id="txtLaunchAt" type="number" placeholder="Launch At">
-  <button id='btnStart'>Start</button>
-  <button id='btnStop'>Stop</button>
-<br /><br />
-<span id="rocketFuelGaugeContainer"></span>
-<br />
-<ul id="tweets"></ul>
-
+<body class='container'>
+  <h1 class='text-center'>Twitter Launch</h1>
+  <div id="msg" class='text-muted text-center'></div>
+  <br/>
+  <div class='twitter-form well'>
+    <div class='form-group'>
+      <input id="txtHashtags" class='form-control' type="text" placeholder="Hash Tag">
+    </div>
+    <div class='form-group'>
+      <input id="txtLaunchAt" class='form-control' type="number" placeholder="# of tweets to launch">
+    </div>
+    <div class='form-group'>
+      <button id='btnStart' class='btn btn-primary'>Start</button>
+      <button id='btnStop' class='btn btn-default'>Stop</button>
+    </div>
+  </div>
+  <div class='text-center'>
+    <span id="rocketFuelGaugeContainer"></span>
+  </div>
+  <div id="tweets" class='text-center' />
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
   <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="/js/twitter.js"></script>
   <script src="/js/gauge.js"></script>
   <script src="/js/index.js"></script>
