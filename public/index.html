@@ -8,38 +8,72 @@
     .twitter-tweet {
       margin: auto;
     }
-    .blast-off {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-    }
-    .twitter-form {
+
+    .container {
       margin: auto;
-      width: 50%;
+      width: 600px;
     }
+    
   </style>
 </head>
 <body class='container'>
   <h1 class='text-center'>Twitter Launch</h1>
-  <div id="msg" class='text-muted text-center'></div>
-  <br/>
-  <div class='twitter-form well'>
-    <div class='form-group'>
-      <input id="txtHashtags" class='form-control' type="text" placeholder="Hash Tag">
+  <br /><br />
+  
+
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Mission Control
     </div>
-    <div class='form-group'>
-      <input id="txtLaunchAt" class='form-control' type="number" placeholder="# of tweets to launch">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-7">
+            <div class='well'>
+              <div class='form-group'>
+                <input id="txtHashtags" class='form-control' type="text" placeholder="Hash Tag">
+              </div>
+              <div class='form-group'>
+                <input id="txtLaunchAt" class='form-control' type="number" placeholder="# of tweets to launch">
+              </div>
+              <div class='form-group'>
+                <button id='btnTest' class='btn btn-warning'>System Test</button>
+                <button id='btnStart' class='btn btn-success'>Start Fueling</button>
+                <button id='btnStop' class='btn btn-danger hidden'>Abort</button>
+              </div>
+            </div>
+            
+        </div>
+        
+        <div class="col-md-4">
+          <div class="text-center">
+            <span id="rocketFuelGaugeContainer"></span>
+          </div> 
+        </div>
+        
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          
+            <div class="panel panel-warning">
+              <div class="panel-heading" role="tab">
+                <h4 class="panel-title">Console Log</h4>
+              </div>
+                <div class="panel-body">
+                  <div id="consolelog"></div>
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
-    <div class='form-group'>
-      <button id='btnStart' class='btn btn-primary'>Start</button>
-      <button id='btnStop' class='btn btn-default'>Stop</button>
+    <div class="panel-footer">
+      <div id="tweets" class='text-center' />
     </div>
+
   </div>
-  <div class='text-center'>
-    <span id="rocketFuelGaugeContainer"></span>
-  </div>
-  <div id="tweets" class='text-center' />
+
+ 
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
   <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>

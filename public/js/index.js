@@ -4,31 +4,40 @@ var socket = io(currentServer);
 var twtReady = false;
 var rocketFuelGauge;
 
-twttr.ready(function () {
-	twtReady = true;
-	showStatus("Twitter Ready");
+$(function() {
+	createGauge(0,1);
 });
 
-function showStatus(message) {
-	$("#msg").text(message).fadeIn('slow');
-}
+
+
+twttr.ready(function () {
+	twtReady = true;
+});
+
+$( "#btnTest" ).click(function() {
+	$("#consolelog").empty();
+	$("#consolelog").append("<div>Twitter widget loaded</div>");
+	socket.emit('systemtest', { });
+});
 
 $( "#btnStart" ).click(function() {
 	var launchAt = $("#txtLaunchAt").val();
 	var track = $("#txtHashtags").val();
-	$(".twitter-form").fadeOut(function() {
-		createGauge(0,launchAt);
-		socket.emit('startStreaming', { launchAt: launchAt, track: track });
-	});
+	toggleClasses();
+	$("#consolelog").empty();
+	$("#rocketFuelGaugeContainer").empty();
+	$("#tweets").empty();
+	createGauge(0,launchAt);
+	socket.emit('startStreaming', { launchAt: launchAt, track: track });
 });
 
 $( "#btnStop" ).click(function() {
+	toggleClasses();
 	socket.emit('stopStreaming', { });
 });
 
 socket.on('tweet', function(data){
 	if (twtReady) {
-		showStatus(data.tweetCount + " / " + data.launchAt);
 		var element = document.createElement("div");
 		twttr.widgets.createTweet(data.tweetId, element);
 		$('#tweets').prepend(element);
@@ -38,25 +47,19 @@ socket.on('tweet', function(data){
 });
 
 socket.on('statusMsg', function(data){
-	if(data.message == "BLAST OFF!!!") {
-		setTimeout(function() {
-			var gif = $("<img>");
-			gif.attr("src", "http://i.giphy.com/3oEduIUO0ANsI76XbG.gif")
-			gif.addClass('blast-off');
-			$("body").append(gif);
-			setTimeout(function(){
-				$(".blast-off").remove();
-			}, 8000);
-		}, 1500);
-	}
-	showStatus(data.message);
+	$("#consolelog").append("<div>" + data.message + "</div>");
 });
+
+function toggleClasses() {
+	$( "#btnStart" ).toggleClass("hidden");
+	$( "#btnStop" ).toggleClass("hidden");
+}
 
 function createGauge(min, max)
 {
 	var config =
 	{
-		size: 300,
+		size: 225,
 		label: "Rocket Fuel",
 		min: min,
 		max: max,
