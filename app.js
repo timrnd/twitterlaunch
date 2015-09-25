@@ -34,7 +34,7 @@ io.on('connection', function (socket) {
     stream = T.stream('statuses/filter', { track: data.track });
     
     stream.on('tweet', function (tweet) {
-      tweetCount++
+      tweetCount++;
       socket.emit('tweet', {tweetId: tweet.id_str, tweetCount: tweetCount, launchAt: data.launchAt});
             
       if (tweetCount >= data.launchAt){
@@ -45,16 +45,16 @@ io.on('connection', function (socket) {
     });
     
     stream.on('limit', function (message) {
-      socket.emit('statusMsg', {message: "Stream limited: " + message, type: "info" });
+      socket.emit('statusMsg', {message: "Stream limited: " + message, type: "error" });
     });
     stream.on('disconnect', function (message) {
-      socket.emit('statusMsg', {message: "Stream disconnected: " + message, type: "info" });
+      socket.emit('statusMsg', {message: "Stream disconnected: " + message, type: "error" });
     });
     stream.on('warning', function (message) {
-      socket.emit('statusMsg', {message: "Stream warning: " + message, type: "info" });
+      socket.emit('statusMsg', {message: "Stream warning: " + message, type: "v" });
     });
     stream.on('disconnect', function (message) {
-      socket.emit('statusMsg', {message: "Stream disconnected: " + message, type: "info" });
+      socket.emit('statusMsg', {message: "Stream disconnected: " + message, type: "error" });
     });
   });
   
