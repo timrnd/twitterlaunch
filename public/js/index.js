@@ -1,4 +1,6 @@
-var socket = io('http://localhost:3000');
+var currentServer = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port;
+
+var socket = io(currentServer);
 var twtReady = false;
 var rocketFuelGauge;
 
